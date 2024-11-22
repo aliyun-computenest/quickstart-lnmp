@@ -68,5 +68,5 @@ Service:
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
-    ShortDescription: LNMP deploy
+    ShortDescription: LNMP 是一种流行的网络服务架构，代表 Linux、Nginx、MySQL（或 MariaDB）和 PHP。它是构建动态网站和 Web 应用程序的常用组合。
     Image: 'resources/icons/service_logo.png'

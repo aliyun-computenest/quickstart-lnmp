@@ -264,7 +264,8 @@ Resources:
       SystemDiskSize: 200
       IoOptimized: optimized
       MaxAmount: 1
-      AllocatePublicIP: false
+      AllocatePublicIP: true
+      InternetMaxBandwidthOut: 5
   Execution:
     Type: ALIYUN::OOS::Execution
     Properties:
