@@ -30,7 +30,7 @@ Resources:
         regionId:
             Ref: ALIYUN::Region
         action: "install"
-        packageName: "ACS-Extension-DockerCE-1853370294850618"
+        packageName: "ACS-Extension-LNMP-One-Click-1853370294850618"
         targets:
           Type: ResourceIds
           ResourceIds:
