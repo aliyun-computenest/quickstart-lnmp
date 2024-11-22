@@ -1,0 +1,50 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Description:
+  en: Deploy LNMP environment
+  zh-cn: LNMP 环境部署
+Parameters:
+  InstanceId:
+    Type: String
+    Label:
+      en: Select Running Linux ECS Instance with public network access enabled
+      zh-cn: 选择公网Linux实例
+    Description:
+      en: <b><font color='red'>Requirements:<ol><li>Linux operating system (Alibaba Cloud Linux 3.2104 LTS/CentOS 7.7/CentOS 7.8/CentOS 7.9/Ubuntu 20.04/Ubuntu 22.04)</li><li>The ECS instance is running. Please wait for a while if the instance has just started</li><li>Access to the public network</li></ol><ul></font></b>
+      zh-cn: <b><font color='red'>要求:<ol><li>Linux操作系统（Alibaba Cloud Linux 3.2104 LTS/CentOS 7.7/CentOS 7.8/CentOS 7.9/Ubuntu 20.04/Ubuntu 22.04）</li><li>ECS实例在运行中，如实例刚启动请稍等片刻</li><li>可以访问公网</li></ol><ul></font></b>
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
+    AssociationPropertyMetadata:
+      OnlyShowSelector: true
+      RegionId: ${RegionId}
+      Status: Running
+      OSType: linux
+      NetworkType: vpc
+Resources:
+  Execution:
+    Type: 'ALIYUN::OOS::Execution'
+    Properties:
+      ResourceOptions:
+        CancelOnDelete: true
+      TemplateName: "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL"
+      SafetyCheck: Skip
+      Parameters:
+        regionId:
+            Ref: ALIYUN::Region
+        action: "install"
+        packageName: "ACS-Extension-DockerCE-1853370294850618"
+        targets:
+          Type: ResourceIds
+          ResourceIds:
+            - Ref: InstanceId
+          RegionId:
+            Ref: ALIYUN::Region
+Outputs:
+  部署日志:
+    Description:
+      zh-cn: 部署日志
+    Value:
+      Fn::Jq:
+        - First
+        - 'if .configurationOutput[0].InstanceResult[0].PackageResult == null then .commandOutput[0].InstanceResult[0].PackageResult else "N/A" end'
+        - Fn::GetAtt:
+          - Execution
+          - Outputs
