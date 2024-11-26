@@ -151,6 +151,11 @@ Parameters:
       en: Zone ID
       zh-cn: 可用区ID
     AssociationProperty: ALIYUN::ECS::Instance::ZoneId
+    AssociationPropertyMetadata:
+      DefaultValueStrategy: random
+      InstanceChargeType: ${PayType}
+      SystemDiskCategory: cloud_essd
+      InstanceType: ${EcsInstanceType}
   VpcId:
     Type: String
     Label:
@@ -163,6 +168,7 @@ Parameters:
         - ${VpcOption}
     Default: ''
     AssociationPropertyMetadata:
+      AutoSelectFirst: true
       Visible:
         Condition:
           Fn::Equals:
@@ -180,6 +186,7 @@ Parameters:
         - ExistingVPC
         - ${VpcOption}
     AssociationPropertyMetadata:
+      AutoSelectFirst: true
       VpcId: VpcId
       ZoneId: ZoneId
       Visible:
