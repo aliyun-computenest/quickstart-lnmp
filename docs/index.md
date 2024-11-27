@@ -61,3 +61,18 @@ LNMP运行环境在计算巢上部署的费用主要涉及：
     <img src="4.jpg" width="100%" align="bottom"/>
 4. 访问服务地址查看环境部署结果。
     <img src="5.jpg" width="100%" align="bottom"/>
+
+## 修改mysql密码
+1. 获取初始 root 密码，连接ECS执行以下命令：
+    ```shell
+    sudo grep 'temporary password' /var/log/mysqld.log
+    ```
+   <img src="6.jpg" width="100%" align="bottom"/>
+2. 使用初始密码连接mysql：
+    ```shell
+    mysql -u root -p
+    ```
+3. 修改密码
+    ```shell
+    ALTER USER 'root'@'localhost' IDENTIFIED BY 'YourNewPassword!';
+    ```
