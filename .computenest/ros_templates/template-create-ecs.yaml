@@ -294,7 +294,7 @@ Resources:
           RegionId:
             Ref: ALIYUN::Region
 Outputs:
-  postgres_address:
+  ServerAddress:
     Description:
       en: LNMP Address
       zh-cn: LNMP 访问页面
