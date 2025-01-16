@@ -18,6 +18,7 @@ Parameters:
       Status: Running
       OSType: linux
       NetworkType: vpc
+      DisabledStatus: true
 Resources:
   Execution:
     Type: 'ALIYUN::OOS::Execution'
