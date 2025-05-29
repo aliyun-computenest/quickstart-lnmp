@@ -3,21 +3,21 @@ Service:
   DeployMetadata:
     SupplierDeployMetadata:
       SupplierTemplateConfigs:
-        - Name: 选择ECS实例（Linux）
-          Url: ros_templates/template-select-ecs.yaml
-          PredefinedParameters: []
-        - Name: 新建ECS实例
-          Url: ros_templates/template-create-ecs.yaml
-          PredefinedParameters: []
-    TemplateConfigs:
       - Name: 选择ECS实例（Linux）
         Url: ros_templates/template-select-ecs.yaml
         PredefinedParameters: []
-        DeployScene: ECS
       - Name: 新建ECS实例
         Url: ros_templates/template-create-ecs.yaml
         PredefinedParameters: []
-        DeployScene: ECS
+    TemplateConfigs:
+    - Name: 选择ECS实例（Linux）
+      Url: ros_templates/template-select-ecs.yaml
+      PredefinedParameters: []
+      DeployScene: ECS
+    - Name: 新建ECS实例
+      Url: ros_templates/template-create-ecs.yaml
+      PredefinedParameters: []
+      DeployScene: ECS
     NetworkMetadata:
       EnablePrivateVpcConnection: false
       EnableReversePrivateVpcConnection: false
@@ -33,18 +33,22 @@ Service:
         EnablePrometheus: false
   ServiceType: private
   ServiceInfo:
-    - Agreements: []
-      Image: resources/icons/service_logo.png
-      Locale: zh-CN
-      Name: LNMP运行环境
-      ShortDescription: LNMP 是一种流行的网络服务架构，代表 Linux、Nginx、MySQL（或 MariaDB）和 PHP。它是构建动态网站和 Web 应用程序的常用组合，例如内容管理系统（CMS）、电子商务平台、博客和社交网络等。
-      Softwares: []
-    - Agreements: []
-      Image: resources/icons/service_logo.png
-      Locale: zh-CN
-      Name: LNMP Runtime Environment
-      ShortDescription: LNMP is a popular network service architecture that stands for Linux, Nginx, MySQL (or MariaDB), and PHP. It is a commonly used combination for building dynamic websites and web applications, such as content management systems (CMS), e-commerce platforms, blogs, and social networks.
-      Softwares: []
+  - Locale: zh-CN
+    Name: LNMP 运行环境
+    ShortDescription: LNMP 是一种流行的网络服务架构，代表 Linux、Nginx、MySQL（或 MariaDB）和 PHP。它是构建动态网站和
+      Web 应用程序的常用组合，例如内容管理系统（CMS）、电子商务平台、博客和社交网络等。
+    Image: 
+      https://service-info-public.oss-cn-hangzhou.aliyuncs.com/5141674772595072/service-image/7455a29b-6be2-4307-bbe0-af7e21a4abcb.png
+    Softwares: []
+  - Locale: en-US
+    Name: LNMP Runtime Environment
+    ShortDescription: LNMP is a popular network service architecture that stands for
+      Linux, Nginx, MySQL (or MariaDB), and PHP. It is a commonly used combination
+      for building dynamic websites and web applications, such as content management
+      systems (CMS), e-commerce platforms, blogs, and social networks.
+    Image: 
+      https://service-info-public.oss-cn-hangzhou.aliyuncs.com/5141674772595072/service-image/bf275128-1830-4614-aaee-11b44c7ea39f.png
+    Softwares: []
   ShareType: Public
   ApprovalType: Manual
 Artifact: {}
