@@ -1,16 +1,50 @@
 Service:
-  RegionId: cn-hangzhou
   DeployType: ros
   DeployMetadata:
-    ServiceInstanceNameRule:
-      Prefix: LNMP
+    SupplierDeployMetadata:
+      SupplierTemplateConfigs:
+        - Name: 选择ECS实例（Linux）
+          Url: ros_templates/template-select-ecs.yaml
+          PredefinedParameters: []
+        - Name: 新建ECS实例
+          Url: ros_templates/template-create-ecs.yaml
+          PredefinedParameters: []
     TemplateConfigs:
       - Name: 选择ECS实例（Linux）
-        Url: 'ros_templates/template-select-ecs.yaml'
+        Url: ros_templates/template-select-ecs.yaml
+        PredefinedParameters: []
+        DeployScene: ECS
       - Name: 新建ECS实例
-        Url: 'ros_templates/template-create-ecs.yaml'
+        Url: ros_templates/template-create-ecs.yaml
+        PredefinedParameters: []
+        DeployScene: ECS
+    NetworkMetadata:
+      EnablePrivateVpcConnection: false
+      EnableReversePrivateVpcConnection: false
+    ServiceInstanceNameRule:
+      Prefix: LNMP-
+      UseDefaultValue: false
+  OperationMetadata:
+    SupportBackup: false
+    PrometheusConfigMap:
+      选择ECS实例（Linux）:
+        EnablePrometheus: false
+      新建ECS实例:
+        EnablePrometheus: false
   ServiceType: private
   ServiceInfo:
-    Locale: zh-CN
-    ShortDescription: LNMP 是一种流行的网络服务架构，代表 Linux、Nginx、MySQL（或 MariaDB）和 PHP。它是构建动态网站和 Web 应用程序的常用组合。
-    Image: 'resources/icons/service_logo.png'
+    - Agreements: []
+      Image: resources/icons/service_logo.png
+      Locale: zh-CN
+      Name: LNMP运行环境
+      ShortDescription: LNMP 是一种流行的网络服务架构，代表 Linux、Nginx、MySQL（或 MariaDB）和 PHP。它是构建动态网站和 Web 应用程序的常用组合，例如内容管理系统（CMS）、电子商务平台、博客和社交网络等。
+      Softwares: []
+    - Agreements: []
+      Image: resources/icons/service_logo.png
+      Locale: zh-CN
+      Name: LNMP Runtime Environment
+      ShortDescription: LNMP is a popular network service architecture that stands for Linux, Nginx, MySQL (or MariaDB), and PHP. It is a commonly used combination for building dynamic websites and web applications, such as content management systems (CMS), e-commerce platforms, blogs, and social networks.
+      Softwares: []
+  ShareType: Public
+  ApprovalType: Manual
+Artifact: {}
